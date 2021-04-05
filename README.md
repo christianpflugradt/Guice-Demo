@@ -47,10 +47,10 @@ Each of the test cases linked below demonstrates a very concise use case of DI w
 
 ## Tests
 
-* [field injection, method injection and constructor injection](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/simple/InterfaceSimpleTest.java)
-* [inject an instance as singleton](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/simple/InterfaceSimpleTest.java) (same test class as above)
-* [inject all implementations of an interface as a set](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/multiple/InterfaceMultipleTest.java)
-* [inject an implementation by name](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/named/InterfaceNamedTest.java)
-* [inject a specific instance of a class](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/instance/InterfaceInstanceTest.java)
-* [inject an implementation without default constructor](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/constructor/InterfaceConstructorTest.java)
-* [inject an instance from a factory](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/factory/InterfaceFactoryTest.java)
+* [field injection, method injection and constructor injection](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/simple/SimpleInterfaceTest.java)
+* [inject an instance as singleton](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/simple/SimpleInterfaceTest.java) (same test class as above)
+* [inject all implementations of an interface as a set](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/multiple/MultipleInterfaceTest.java)
+* [inject an implementation by name](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/named/NamedInterfaceTest.java)
+* [inject a specific instance of a class](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/instance/InstanceInterfaceTest.java)
+* [inject an implementation without default constructor](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/constructor/ConstructorInterfaceTest.java)
+* [inject an instance from a factory](https://gitlab.com/christianpflugradt/guice-demo/-/blob/main/src/test/java/de/pflugradts/guicedemo/factory/FactoryInterfaceTest.java)
