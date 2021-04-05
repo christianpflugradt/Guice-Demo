@@ -26,13 +26,13 @@ class MultipleInterfaceTest {
 
     @Test
     void shouldBeCreated() {
-
         assertThat(wrapper).isNotNull()
             .extracting(Wrapper::getInterfaceMultiples).isNotNull()
-            .asList().isNotEmpty().hasSize(3);
-        assertThat(wrapper.getInterfaceMultiples()).hasAtLeastOneElementOfType(MultipleClass1.class);
-        assertThat(wrapper.getInterfaceMultiples()).hasAtLeastOneElementOfType(MultipleClass2.class);
-        assertThat(wrapper.getInterfaceMultiples()).hasAtLeastOneElementOfType(MultipleClass3.class);
+            .asList().isNotEmpty()
+            .hasSize(3)
+            .hasAtLeastOneElementOfType(MultipleClass1.class)
+            .hasAtLeastOneElementOfType(MultipleClass2.class)
+            .hasAtLeastOneElementOfType(MultipleClass3.class);
     }
 
 }
