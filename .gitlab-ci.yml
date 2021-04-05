@@ -1,0 +1,18 @@
+image: registry.gitlab.com/christianpflugradt/pwman3/openjdk11:latest
+
+stages:
+  - test
+
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+tests:
+  stage: test
+  script: ./gradlew test
+  artifacts:
+    when: always
+    paths:
+      - build/reports/tests/*
+    expire_in: 1 week
+  only:
+    - main
