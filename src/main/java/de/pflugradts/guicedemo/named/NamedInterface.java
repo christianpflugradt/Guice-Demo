@@ -1,4 +1,4 @@
 package de.pflugradts.guicedemo.named;
 
-public interface InterfaceNamed {
+public interface NamedInterface {
 }

@@ -1,5 +1,5 @@
 package de.pflugradts.guicedemo.factory;
 
-public interface InterfaceFactory {
+public interface FactoryInterface {
     String getName();
 }

@@ -1,4 +1,4 @@
 package de.pflugradts.guicedemo.simple;
 
-public interface InterfaceSimple {
+public interface SimpleInterface {
 }

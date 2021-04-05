@@ -1,12 +1,12 @@
 package de.pflugradts.guicedemo.constructor;
 
-public class ClassConstructor implements InterfaceConstructor {
+public class ConstructorClass implements ConstructorInterface {
 
     private final String s;
     private final int i;
     private final boolean b;
 
-    public ClassConstructor(String s, int i, boolean b) {
+    public ConstructorClass(String s, int i, boolean b) {
         this.s = s;
         this.i = i;
         this.b = b;
