@@ -1,0 +1,29 @@
+de/pflugradts/guicedemo/simple/ClassSimple.java
+ de.pflugradts.guicedemo.simple.ClassSimple
+de/pflugradts/guicedemo/factory/InterfaceFactory.java
+ de.pflugradts.guicedemo.factory.InterfaceFactory
+de/pflugradts/guicedemo/constructor/ClassConstructor.java
+ de.pflugradts.guicedemo.constructor.ClassConstructor
+de/pflugradts/guicedemo/constructor/InterfaceConstructor.java
+ de.pflugradts.guicedemo.constructor.InterfaceConstructor
+de/pflugradts/guicedemo/multiple/ClassMultiple2.java
+ de.pflugradts.guicedemo.multiple.ClassMultiple2
+de/pflugradts/guicedemo/multiple/ClassMultiple3.java
+ de.pflugradts.guicedemo.multiple.ClassMultiple3
+de/pflugradts/guicedemo/factory/ClassFactory.java
+ de.pflugradts.guicedemo.factory.ClassFactory
+de/pflugradts/guicedemo/named/ClassNamedA.java
+ de.pflugradts.guicedemo.named.ClassNamedA
+de/pflugradts/guicedemo/Module.java
+ de.pflugradts.guicedemo.Module
+ de.pflugradts.guicedemo.Module$InterfaceFactoryProvider
+de/pflugradts/guicedemo/multiple/ClassMultiple1.java
+ de.pflugradts.guicedemo.multiple.ClassMultiple1
+de/pflugradts/guicedemo/named/InterfaceNamed.java
+ de.pflugradts.guicedemo.named.InterfaceNamed
+de/pflugradts/guicedemo/multiple/InterfaceMultiple.java
+ de.pflugradts.guicedemo.multiple.InterfaceMultiple
+de/pflugradts/guicedemo/simple/InterfaceSimple.java
+ de.pflugradts.guicedemo.simple.InterfaceSimple
+de/pflugradts/guicedemo/named/ClassNamedB.java
+ de.pflugradts.guicedemo.named.ClassNamedB
