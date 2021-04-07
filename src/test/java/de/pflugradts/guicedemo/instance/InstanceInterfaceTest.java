@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class InstanceInterfaceTest {
 
-    private static class Wrapper {
+    private static class Testbed {
 
         @Inject @Named(NAME_PI)
         private float pi;
@@ -22,12 +22,17 @@ class InstanceInterfaceTest {
 
     }
 
-    private final Wrapper wrapper = Guice.createInjector(new InstanceModule()).getInstance(Wrapper.class);
-
     @Test
     void shouldBeCreated() {
-        assertThat(wrapper).isNotNull()
-            .extracting(Wrapper::getPi).isNotNull()
+        // given
+        final var injector = Guice.createInjector(new InstanceModule());
+
+        // when
+        final var actual = injector.getInstance(Testbed.class);
+
+        // then
+        assertThat(actual).isNotNull()
+            .extracting(Testbed::getPi).isNotNull()
             .isEqualTo(PI);
     }
 

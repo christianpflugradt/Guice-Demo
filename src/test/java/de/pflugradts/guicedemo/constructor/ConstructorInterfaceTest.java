@@ -11,23 +11,27 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ConstructorInterfaceTest {
 
-    private static class Wrapper {
+    private static class Testbed {
         @Inject
         ConstructorInterface constructorInterface;
     }
 
-    private final Wrapper wrapper = Guice.createInjector(new ConstructorModule()).getInstance(Wrapper.class);
-
     @Test
     void shouldBeCreated() {
-        assertThat(wrapper).isNotNull()
+        // given
+        final var injector = Guice.createInjector(new ConstructorModule());
+
+        // when
+        final var actual = injector.getInstance(Testbed.class);
+
+        // then
+        assertThat(actual).isNotNull()
             .extracting(w -> w.constructorInterface).isNotNull()
             .isInstanceOf(ConstructorClass.class);
 
-        final var actual = wrapper.constructorInterface;
-        assertThat(actual.getS()).isNotNull().isEqualTo(CONSTRUCTOR_STRING);
-        assertThat(actual.getI()).isNotNull().isEqualTo(CONSTRUCTOR_INT);
-        assertThat(actual.isB()).isNotNull().isEqualTo(CONSTRUCTOR_BOOL);
+        assertThat(actual.constructorInterface.getS()).isNotNull().isEqualTo(CONSTRUCTOR_STRING);
+        assertThat(actual.constructorInterface.getI()).isNotNull().isEqualTo(CONSTRUCTOR_INT);
+        assertThat(actual.constructorInterface.isB()).isNotNull().isEqualTo(CONSTRUCTOR_BOOL);
     }
 
 }

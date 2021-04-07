@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class SimpleInterfaceTest {
 
-    private static class InjectionWrapper {
+    private static class InjectionTestbed {
 
         @Inject
         private SimpleInterface simpleInterfaceFieldInjected;
@@ -20,7 +20,7 @@ class SimpleInterfaceTest {
         private final SimpleInterface simpleInterfaceConstructorInjected;
 
         @Inject
-        public InjectionWrapper(SimpleInterface constructorParam) {
+        public InjectionTestbed(SimpleInterface constructorParam) {
             this.simpleInterfaceConstructorInjected = constructorParam;
         }
 
@@ -46,26 +46,30 @@ class SimpleInterfaceTest {
     @Nested
     class InjectionTest {
 
-        private final InjectionWrapper wrapper = Guice.createInjector(new SimpleModule()).getInstance(InjectionWrapper.class);
-
         @Test
         void shouldBeCreated() {
-            assertThat(wrapper).isNotNull();
-            final var fieldInj = wrapper.getSimpleInterfaceFieldInjected();
-            final var methodInj = wrapper.getSimpleInterfaceMethodInjected();
-            final var constrInj = wrapper.getSimpleInterfaceConstructorInjected();
+            // given
+            final var injector = Guice.createInjector(new SimpleModule());
 
-            assertThat(fieldInj).isNotNull().isInstanceOf(SimpleClass.class)
-                .isNotSameAs(methodInj)
-                .isNotSameAs(constrInj);
-            assertThat(methodInj).isNotNull().isInstanceOf(SimpleClass.class)
-                .isNotSameAs(constrInj);
-            assertThat(constrInj).isNotNull().isInstanceOf(SimpleClass.class);
+            // when
+            final var actual = injector.getInstance(InjectionTestbed.class);
+
+            // then
+            assertThat(actual).isNotNull();
+            assertThat(actual.getSimpleInterfaceFieldInjected()).isNotNull()
+                .isInstanceOf(SimpleClass.class)
+                .isNotSameAs(actual.getSimpleInterfaceMethodInjected())
+                .isNotSameAs(actual.getSimpleInterfaceConstructorInjected());
+            assertThat(actual.getSimpleInterfaceMethodInjected()).isNotNull()
+                .isInstanceOf(SimpleClass.class)
+                .isNotSameAs(actual.getSimpleInterfaceConstructorInjected());
+            assertThat(actual.getSimpleInterfaceConstructorInjected()).isNotNull()
+                .isInstanceOf(SimpleClass.class);
         }
 
     }
 
-    private static class SingletonWrapper {
+    private static class SingletonTestbed {
 
         @Inject @Named(NAME_SINGLETON)
         private SimpleInterface simpleInterfaceSingletonA;
@@ -85,17 +89,22 @@ class SimpleInterfaceTest {
     @Nested
     class SingletonTest {
 
-        private final SingletonWrapper wrapper = Guice.createInjector(new SingletonModule()).getInstance(SingletonWrapper.class);
-
         @Test
         void shouldBeCreated() {
-            assertThat(wrapper).isNotNull();
-            final var singletonA = wrapper.getSimpleInterfaceSingletonA();
-            final var singletonB = wrapper.getSimpleInterfaceSingletonB();
+            // given
+            final var injector = Guice.createInjector(new SingletonModule());
 
-            assertThat(singletonA).isNotNull().isInstanceOf(SimpleClass.class);
-            assertThat(singletonB).isNotNull().isInstanceOf(SimpleClass.class);
-            assertThat(singletonA).isSameAs(singletonB);
+            // when
+            final var actual = injector.getInstance(SingletonTestbed.class);
+
+            // then
+            assertThat(actual).isNotNull();
+            assertThat(actual.getSimpleInterfaceSingletonA()).isNotNull()
+                .isInstanceOf(SimpleClass.class);
+            assertThat(actual.getSimpleInterfaceSingletonB()).isNotNull()
+                .isInstanceOf(SimpleClass.class);
+            assertThat(actual.getSimpleInterfaceSingletonA())
+                .isSameAs(actual.getSimpleInterfaceSingletonB());
         }
 
     }

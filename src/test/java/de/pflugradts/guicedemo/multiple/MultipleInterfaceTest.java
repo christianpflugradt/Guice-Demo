@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MultipleInterfaceTest {
 
-    private static class Wrapper {
+    private static class Testbed {
 
         @Inject
         private Set<MultipleInterface> multipleInterfaces;
@@ -22,12 +22,17 @@ class MultipleInterfaceTest {
 
     }
 
-    private final Wrapper wrapper = Guice.createInjector(new MultipleModule()).getInstance(Wrapper.class);
-
     @Test
     void shouldBeCreated() {
-        assertThat(wrapper).isNotNull()
-            .extracting(Wrapper::getInterfaceMultiples).isNotNull()
+        // given
+        final var injector = Guice.createInjector(new MultipleModule());
+
+        // when
+        final var actual = injector.getInstance(Testbed.class);
+
+        // then
+        assertThat(actual).isNotNull()
+            .extracting(Testbed::getInterfaceMultiples).isNotNull()
             .asList().isNotEmpty()
             .hasSize(3)
             .hasAtLeastOneElementOfType(MultipleClass1.class)

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class NamedInterfaceTest {
 
-    private static class Wrapper {
+    private static class Testbed {
 
         @Inject @Named(NAME_A)
         private NamedInterface namedInterfaceA;
@@ -28,16 +28,18 @@ class NamedInterfaceTest {
 
     }
 
-    private final Wrapper wrapper = Guice.createInjector(new NamedModule()).getInstance(Wrapper.class);
-
     @Test
     void shouldBeCreated() {
-        assertThat(wrapper).isNotNull();
-        final var namedA = wrapper.getInterfaceNamedA();
-        final var namedB = wrapper.getInterfaceNamedB();
+        // given
+        final var injector = Guice.createInjector(new NamedModule());
 
-        assertThat(namedA).isNotNull().isInstanceOf(NamedClassA.class);
-        assertThat(namedB).isNotNull().isInstanceOf(NamedClassB.class);
+        // when
+        final var actual = injector.getInstance(Testbed.class);
+
+        // then
+        assertThat(actual).isNotNull();
+        assertThat(actual.getInterfaceNamedA()).isNotNull().isInstanceOf(NamedClassA.class);
+        assertThat(actual.getInterfaceNamedB()).isNotNull().isInstanceOf(NamedClassB.class);
     }
 
 }

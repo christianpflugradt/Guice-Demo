@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class FactoryInterfaceTest {
 
-    private static class Wrapper {
+    private static class Testbed {
 
         @Inject
         private FactoryInterface interfaceProvidesFactory;
@@ -29,13 +29,18 @@ class FactoryInterfaceTest {
 
     }
 
-    private final Wrapper wrapper = Guice.createInjector(new FactoryModule()).getInstance(Wrapper.class);
-
     @Test
     void shouldBeCreated() {
-        assertThat(wrapper).isNotNull();
-        final var provides = wrapper.getInterfaceProvidesFactory();
-        final var provider = wrapper.getInterfaceProviderFactory();
+        // given
+        final var injector = Guice.createInjector(new FactoryModule());
+
+        // when
+        final var actual = injector.getInstance(Testbed.class);
+
+        // then
+        assertThat(actual).isNotNull();
+        final var provides = actual.getInterfaceProvidesFactory();
+        final var provider = actual.getInterfaceProviderFactory();
 
         assertThat(provides).isNotNull().isInstanceOf(FactoryClass.class)
             .extracting(FactoryInterface::getName).isNotNull().isEqualTo(FACTORY_PROVIDES);
